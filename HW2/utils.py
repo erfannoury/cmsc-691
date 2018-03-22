@@ -130,7 +130,7 @@ def find_sift(I, circles, enlarge_factor=1.5):
 
         gridx_t = gridx * r + cx
         gridy_t = gridy * r + cy
-        grid_res = gridy_t[0, 1] - gridy_t[0, 0]
+        grid_res = 2.0 / NUM_BINS * r
 
         x_lo = np.floor(np.max([cx - r - grid_res / 2, 0])).astype(np.int32)
         x_hi = np.ceil(np.min([cx + r + grid_res / 2, width])).astype(np.int32)
@@ -162,7 +162,7 @@ def find_sift(I, circles, enlarge_factor=1.5):
     tmp = np.sqrt(np.sum(sift_arr ** 2, axis=-1))
     if np.sum(tmp > 1) > 0:
         sift_arr_norm = sift_arr[tmp > 1, :]
-        sift_arr_norm /= tmp[np.newaxis, tmp > 1]
+        sift_arr_norm /= tmp[tmp > 1].reshape(-1, 1)
 
         sift_arr_norm = np.clip(sift_arr_norm, sift_arr_norm.min(), 0.2)
 

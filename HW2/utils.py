@@ -26,13 +26,11 @@ def dist2(x, c):
         'Data dimension does not match dimension of centers'
 
     x = np.expand_dims(x, axis=0)  # new shape will be `(1, ndata, dimx)`
-    c = np.expand_dims(c, axis=0)  # new shape will be `(1, ncenters, dimc)`
+    c = np.expand_dims(c, axis=1)  # new shape will be `(ncenters, 1, dimc)`
 
     # We will now use broadcasting to easily calculate pairwise distances
     n2 = np.sum((x - c) ** 2, axis=-1)
 
-    # The code in one line will be:
-    # n2 = ((x[np.newaxis] - c[np.newaxis]) ** 2).sum(axis=-1)
     return n2
 
 

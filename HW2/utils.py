@@ -221,7 +221,7 @@ def harris(im, sigma, thresh=None, radius=None):
     if thresh is None or radius is None:
         return cim
     else:
-        size = 2 * radius + 1
+        size = int(2 * radius + 1)
         mx = rank_filter(cim, -1, size=size)
         cim = (cim == mx) & (cim > thresh)
 

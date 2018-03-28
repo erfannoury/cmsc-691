@@ -84,6 +84,8 @@ def find_sift(I, circles, enlarge_factor=1.5):
     sift_arr: numpy.ndarray
         Array of SIFT descriptors of shape `(ncircles, 128)`
     """
+    assert circles.ndim == 2 and circles.shape[1] == 3, \
+        'Use circles array (keypoints array) of correct shape'
     I = I.astype(np.float64)
     if I.ndim == 3:
         I = rgb2gray(I)

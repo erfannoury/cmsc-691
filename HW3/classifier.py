@@ -26,6 +26,5 @@ def make_predictions(clf, features):
 def show_confusion(labels, predictions):
     conf_mat = confusion_matrix(
         y_true=labels,
-        y_pred=predictions,
-        labels=['Cats', 'Dogs'])
+        y_pred=predictions)
     print(conf_mat)

@@ -2,7 +2,7 @@ import numpy as np
 
 
 def compute_features(imdb, args):
-    if args.feature == 'tinyimages':
+    if args.feature == 'tinyimage':
         return tinyimage_features(imdb, args.tinyimage_patchdim)
     elif args.feature == 'bow-patches':
         return bow_patch_features(

@@ -19,7 +19,7 @@ def train_classifier(features, labels, args):
 
 def make_predictions(clf, features):
     prediction_probs = clf.predict_proba(features)
-    return np.argmax(prediction_probs, axis=-1), \
+    return np.argmax(prediction_probs, axis=-1) + 1, \
         np.max(prediction_probs, axis=-1)
 
 

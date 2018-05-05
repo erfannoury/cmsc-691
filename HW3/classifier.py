@@ -10,7 +10,7 @@ def train_classifier(features, labels, args):
         clf.fit(features, labels)
         return clf
     elif args.classifier == 'svm':
-        clf = SVC(C=args.svm_lambda)
+        clf = SVC(C=args.svm_lambda, probability=True)
         clf.fit(features, labels)
         return clf
     else:
